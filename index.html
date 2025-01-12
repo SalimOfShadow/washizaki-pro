@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SalimOfShadow's website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="preload"
+      href="./src/assets/characters-gif/kyo/kyo-running.gif"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="./src/assets/characters-gif/kyo/kyo-winpose.gif"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="./src/assets/characters-gif/kyo/kyo-neomax.gif"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="./src/assets/characters-gif/kyo/kyo-final.gif"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="./src/assets/characters-gif/iori/iori-running.gif"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="./src/assets/characters-gif/iori/iori-winpose.gif"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="./src/assets/characters-gif/iori/iori-neomax.gif"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="./src/assets/characters-gif/iori/iori-final.gif"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="./src/assets/characters-gif/kula/kula-running.gif"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="./src/assets/characters-gif/kula/kula-winpose.gif"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="./src/assets/characters-gif/kula/kula-neomax.gif"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="./src/assets/characters-gif/kula/kula-final.gif"
+      as="image"
+    />
+    <script>
+      var favicon_images = [
+        './iori-fireball/cffd7dbebcaf8f92464a1acd159439fe-gif_00_delay-0.1s.gif',
+        './iori-fireball/cffd7dbebcaf8f92464a1acd159439fe-gif_01_delay-0.1s.gif',
+        './iori-fireball/cffd7dbebcaf8f92464a1acd159439fe-gif_02_delay-0.1s.gif',
+        './iori-fireball/cffd7dbebcaf8f92464a1acd159439fe-gif_03_delay-0.1s.gif',
+        './iori-fireball/cffd7dbebcaf8f92464a1acd159439fe-gif_04_delay-0.1s.gif',
+        './iori-fireball/cffd7dbebcaf8f92464a1acd159439fe-gif_05_delay-0.1s.gif',
+        './iori-fireball/cffd7dbebcaf8f92464a1acd159439fe-gif_06_delay-0.1s.gif',
+        './iori-fireball/cffd7dbebcaf8f92464a1acd159439fe-gif_07_delay-0.1s.gif',
+        './iori-fireball/cffd7dbebcaf8f92464a1acd159439fe-gif_08_delay-0.1s.gif',
+        './iori-fireball/cffd7dbebcaf8f92464a1acd159439fe-gif_09_delay-0.1s.gif',
+      ];
+
+      image_counter = 0; // To keep track of the current image
+
+      setInterval(function () {
+        // Remove current favicon
+        var existingIcons = document.querySelectorAll(
+          "link[rel='icon'], link[rel='shortcut icon']"
+        );
+        existingIcons.forEach((icon) => icon.remove());
+
+        // Add new favicon image
+        var newIcon = document.createElement('link');
+        newIcon.rel = 'icon';
+        newIcon.href = favicon_images[image_counter];
+        document.head.appendChild(newIcon);
+
+        // If last image, go to first image; else, go to the next image
+        image_counter = (image_counter + 1) % favicon_images.length;
+      }, 150); // 200 milliseconds interval
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
