@@ -18,7 +18,7 @@ const ProjectCard = (props) => {
       <iframe
         width="560"
         height="315"
-        src="https://www.youtube.com/embed/tqIwhdqOs38?si=LecGlYp0en8_2vz1"
+        src={`https://www.youtube.com/embed/${props.id}?si=69LLkqKO5yUj1yBI`}
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

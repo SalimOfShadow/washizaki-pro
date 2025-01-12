@@ -160,7 +160,12 @@ const Hero = (props: HeroProps) => {
         }
         className="pfp"
       >
-        <img src={props.img} alt="" style={{ width: 150 }} draggable="false" />
+        <img
+          src={props.img}
+          alt=""
+          style={{ width: 150, height: 150 }}
+          draggable="false"
+        />
         {(canInteract || isPageMobile) && (
           <motion.div
             key="glow"

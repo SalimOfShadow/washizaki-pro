@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProjectCard from "./components/ProjectCard";
 import Heading from "./components/Heading";
-import projects from "./content/projects";
+import videos from "./content/videos";
 import Skill from "./components/Skill";
 import { skills } from "./content/skills";
 import { motion, useAnimation } from "framer-motion";
@@ -247,15 +247,14 @@ function App() {
           animate={controls}
           variants={containerVariants}
         >
-          {projects.map((project, index) => (
+          {videos.map((video, index) => (
             <div>
               <ProjectCard
-                name={project.name}
-                img={project.img}
-                description={project.description}
-                source={project.sourceCode}
-                preview={project.preview}
-                tags={""}
+                id={video.id}
+                myCharacter={video.myCharacter}
+                opponentsCharacter={video.opponentsCharacter}
+                timestamp={video.timestamp || ""}
+                matchWon={video.matchWon}
               />
             </div>
           ))}
