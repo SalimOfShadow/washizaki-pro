@@ -29,9 +29,14 @@ import HeroHeading from "./components/HeroHeading";
 const characterArray: CharacterName[] = ["kyo", "iori", "kula"];
 
 function App() {
-  const controls = useAnimation();
   const { theme, setTheme } = useTheme();
-  const [ref, inView] = useInView({ triggerOnce: true });
+
+  const projectControls = useAnimation();
+  const skillControls = useAnimation();
+
+  const [projectRef, projectInView] = useInView({ triggerOnce: true });
+  const [skillRef, skillInView] = useInView({ triggerOnce: true });
+
   const pageDimensions: { width: number; height: number } =
     useWindowDimensions();
   const { characterState, setCharacterState, characterName, setCharacterName } =
@@ -95,10 +100,15 @@ function App() {
   }, [pageDimensions]);
 
   useEffect(() => {
-    if (inView) {
-      controls.start("visible");
+    // Start projects animation immediately
+    projectControls.start("visible");
+  }, [projectControls]);
+
+  useEffect(() => {
+    if (skillInView) {
+      skillControls.start("visible");
     }
-  }, [controls, inView]);
+  }, [skillControls, skillInView]);
 
   const containerVariants = {
     hidden: {},
@@ -114,6 +124,10 @@ function App() {
     visible: { opacity: 1, x: 0 },
   };
 
+  const projectVariants = {
+    hidden: { opacity: 0, x: -200 },
+    visible: { opacity: 1, x: 0 },
+  };
   return (
     <>
       <Navbar
@@ -242,21 +256,21 @@ function App() {
         <Heading firstWord="My" secondWord=" Highlights" />
         <motion.div
           className="project-map"
-          ref={ref}
+          ref={projectRef}
           initial="hidden"
-          animate={controls}
-          variants={containerVariants}
+          animate={projectControls}
+          variants={containerVariants} // Enables staggerChildren
         >
           {videos.map((video, index) => (
-            <div>
+            <motion.div key={index} variants={projectVariants}>
               <ProjectCard
                 id={video.id}
                 myCharacter={video.myCharacter}
                 opponentsCharacter={video.opponentsCharacter}
-                timestamp={video.timestamp || ""}
+                timestamp={video.timeStamp || ""}
                 matchWon={video.matchWon}
               />
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </section>
@@ -264,9 +278,9 @@ function App() {
         <Heading firstWord="Recently" secondWord="Played" />
         <motion.div
           className="skill-map"
-          ref={ref}
+          ref={skillRef}
           initial="hidden"
-          animate={controls}
+          animate={skillControls}
           variants={containerVariants}
         >
           {skills.map((skill, index) => (

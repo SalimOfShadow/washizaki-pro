@@ -24,7 +24,7 @@ import kulaFinalGif from "../../../assets/characters-gif/kula/kula-final.gif";
 import bisonRunningGif from "../../../assets/characters-gif/bison/bison-running.gif";
 import bisonStandingGif from "../../../assets/characters-gif/bison/bison-winpose.gif";
 import bisonNeomaxGif from "../../../assets/characters-gif/bison/bison-neomax.gif";
-import bisomFinalGif from "../../../assets/characters-gif/bison/bison-final.gif";
+import bisonFinalGif from "../../../assets/characters-gif/bison/bison-final.gif";
 
 import "./character.css";
 import { motion } from "framer-motion";
@@ -70,6 +70,13 @@ export const Character: React.FC = () => {
       standing: kulaStandingGif,
       final: kulaFinalGif,
       "running-back": kulaRunningGif,
+    },
+    bison: {
+      running: bisonRunningGif,
+      neomax: bisonNeomaxGif,
+      standing: bisonStandingGif,
+      final: bisonFinalGif,
+      "running-back": bisonRunningGif,
     },
   };
 

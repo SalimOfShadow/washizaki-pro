@@ -11,9 +11,9 @@ export type CharacterState =
   | "running-back";
 
 // Defining the possible character names
-export type CharacterName = "kyo" | "iori" | "kula";
+export type CharacterName = "kyo" | "iori" | "kula" | "bison";
 
-const characterArray: CharacterName[] = ["kyo", "iori", "kula"];
+const characterArray: CharacterName[] = ["kyo", "iori", "kula", "bison"];
 
 interface CharacterProviderProps {
   children: React.ReactNode;

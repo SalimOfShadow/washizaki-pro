@@ -21,9 +21,9 @@ const ProjectCard = (props) => {
         src={`https://www.youtube.com/embed/${props.id}?si=69LLkqKO5yUj1yBI`}
         title="YouTube video player"
         frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allow="accelerometer;fullscreen; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
+        allowfullscreen={true}
       ></iframe>
 
       {/* <div className="project-tags">
