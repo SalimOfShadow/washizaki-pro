@@ -15,33 +15,16 @@ const ProjectCard = (props) => {
       className="project-card"
       style={{ boxShadow: `0 8px 32px 0 ${themeShadows[theme]}` }}
     >
-      <div className="project-img">
-        <img
-          src={props.img}
-          alt={props.name}
-          onClick={() => {
-            window.open(props.source, "_blank");
-          }}
-        />
-      </div>
-      <div className="project-title">
-        <h2>{props.name}</h2>
-      </div>
-      <div className="project-description">
-        <p>{props.description}</p>
-      </div>
-      <div className="project-links">
-        {props.source && (
-          <div>
-            <a href={props.source} className="github">
-              <FaGithub />
-            </a>
-            <a href={props.preview}>
-              <FaExternalLinkAlt />
-            </a>
-          </div>
-        )}
-      </div>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/tqIwhdqOs38?si=LecGlYp0en8_2vz1"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
 
       {/* <div className="project-tags">
         <div className="project-tag">

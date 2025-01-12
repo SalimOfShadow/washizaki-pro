@@ -1,4 +1,7 @@
 //projects start
+
+// TODO -- ADD COSTUM EMBED YOUTUBE VIDEOS CONFIGS
+
 const projects = [
   {
     name: "Recca",

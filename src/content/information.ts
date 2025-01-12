@@ -1,12 +1,12 @@
 //personal information start
 
 const userData = {
-  firstName: '<Salim',
-  lastName: 'KOF/>',
-  title: 'About Me',
+  firstName: "<Washizaki",
+  lastName: "Yang/>",
+  title: "About Me",
   img: "../assets/profile-picture.png",
   description:
-    "Hey there! 👋 I'm  a passionate Software Engineering. 💻 By day, I'm a tech enthusiast exploring the wonders of coding, and by night, I transform into an aspiring full-stack developer. ",
+    "Hello there! 👋 I'm a Street Fighter player from US East Coast. 💻 My favourite characters has always been M. Bison. ",
 };
 
 //personal information end

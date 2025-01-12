@@ -1,9 +1,9 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   darkThemeStyles,
   themeShadows,
   useTheme,
-} from '../contexts/ThemeContext';
+} from "../contexts/ThemeContext";
 
 const Footer = () => {
   const { theme } = useTheme();
@@ -12,11 +12,11 @@ const Footer = () => {
       className="footer"
       style={{
         boxShadow: `0 8px 32px 0 ${themeShadows[theme]}`,
-        marginTop: '20px',
+        marginTop: "20px",
       }}
     >
       <p>
-        Salim Of Shadow <span style={{ color: theme }}>KOF</span>
+        Washizaki<span style={{ color: theme }}>PRO</span>
       </p>
     </footer>
   );

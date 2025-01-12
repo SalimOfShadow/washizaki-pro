@@ -1,7 +1,7 @@
 export const skills = [
   {
-    name: "typescript.svg",
-    url: "https://www.typescriptlang.org/",
+    name: "celeste.svg",
+    url: "https://store.steampowered.com/app/504230/Celeste/",
   },
   {
     name: "python.svg",

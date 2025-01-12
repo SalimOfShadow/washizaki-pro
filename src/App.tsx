@@ -239,7 +239,7 @@ function App() {
       <div className="hr"></div>
       <HeroHeading></HeroHeading>
       <section id="projects">
-        <Heading firstWord="My" secondWord="Projects" />
+        <Heading firstWord="My" secondWord=" Highlights" />
         <motion.div
           className="project-map"
           ref={ref}
@@ -248,7 +248,7 @@ function App() {
           variants={containerVariants}
         >
           {projects.map((project, index) => (
-            <div key={index}>
+            <div>
               <ProjectCard
                 name={project.name}
                 img={project.img}
@@ -262,7 +262,7 @@ function App() {
         </motion.div>
       </section>
       <section id="skills">
-        <Heading firstWord="Skills" secondWord="&Tools" />
+        <Heading firstWord="Recently" secondWord="Played" />
         <motion.div
           className="skill-map"
           ref={ref}
