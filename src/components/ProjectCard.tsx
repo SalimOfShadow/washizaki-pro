@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { FaGithub } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { themeShadows, useTheme } from "../contexts/ThemeContext";
+import ScoreResult from "./score-result/ScoreResult";
 // import { motion } from "framer-motion";
 const ProjectCard = (props) => {
   const { theme, setTheme } = useTheme();
@@ -26,6 +27,9 @@ const ProjectCard = (props) => {
         allowfullscreen={true}
       ></iframe>
 
+
+    <ScoreResult  p1Character="Bison" p2Character="Bison" matchWon={false} roundsSetting={7} roundsWon={3} roundsLost={2}/>
+    
       {/* <div className="project-tags">
         <div className="project-tag">
           {projects.stack.map((project, index) => (

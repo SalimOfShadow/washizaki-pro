@@ -1,0 +1,55 @@
+.score-result-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 15%;
+    margin: auto;
+    margin-top: 10px;
+    background-color: rgba(128, 128, 128, 0.466);
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.main-character-icon {
+    margin-top: 20px;
+    position: relative;
+    pointer-events: none;
+    transition: 0.3;
+    outline: 'none';
+}
+
+
+.main-character-icon img{
+    height: 50px;
+    width:  50px;
+    border-radius: 100px;
+}
+
+.round-icon {
+    pointer-events: none;
+    position: relative;
+    transition: 0.3;
+    outline: 'none';
+}
+.round-icon img {
+    margin-top: 20px;
+    height: 30px;
+    width:  30px;
+}
+.versus-icon {
+    margin-top: 22px;
+    pointer-events: auto;
+}
+
+.versus-icon img {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    transition: 0.3;
+    outline: 'none';
+}
+.score-result-container .inner {
+    background-color: rgba(128, 128, 128, 0.466);
+}

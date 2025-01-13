@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import kyoAvatar from '../../assets/characters-icon/kyo-icon.png';
 import ioriAvatar from '../../assets/characters-icon/iori-icon.png';
 import kulaAvatar from '../../assets/characters-icon/kula-icon.png';
+import bisonAvatar from '../../assets/characters-icon/USF4-characters/bison-icon.png';
 import { changeTheme, useTheme } from '../../contexts/ThemeContext';
 import './character-select.css';
 import { CharacterName } from '../animations/character/Character';
@@ -15,6 +16,7 @@ const avatars = [
   { character: 'kyo', theme: 'blue', src: kyoAvatar },
   { character: 'iori', theme: 'red', src: ioriAvatar },
   { character: 'kula', theme: 'aqua', src: kulaAvatar },
+  { character: 'bison', theme: 'magenta', src: bisonAvatar},
 ];
 
 const CharacterSelect = (props: {
