@@ -126,7 +126,7 @@ export const Character: React.FC = () => {
           setCharacterState('scissor'); // Change to 'scissor' after another 1.2 seconds
           setTimeout(() => {
             setCharacterState('standing'); // Change to 'standing' after 1.2 seconds from 'scissor'
-          }, 1200);
+          }, 800);
         }, 1200);
       }, 1200); // Delay before changing to 'turning'
     }
