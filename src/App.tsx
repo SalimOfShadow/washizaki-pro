@@ -145,23 +145,23 @@ function App() {
                 x:
                   characterState === "running-back"
                     ? pageDimensions.width / 2 -
-                      (characterName === "kyo" || characterName === "kula"
-                        ? 300
-                        : -300) // Center with offset based on character
-                    : characterName === "kyo" || characterName === "kula"
-                    ? -300 // Off-screen left for Kyo
+                      (characterName === "kyo" || characterName === "kula" || characterName === "bison" 
+                        ? 250
+                        : -250) // Center with offset based on character
+                    : characterName === "kyo" || characterName === "kula" || characterName === "bison"
+                    ? -250 // Off-screen left for Kyo
                     : pageDimensions.width + 300, // Off-screen right for Iori
               }}
               animate={{
                 x:
                   characterState === "running-back"
-                    ? characterName === "kyo" || characterName === "kula"
-                      ? -300 // Back to off-screen left for Kyo
+                    ? characterName === "kyo" || characterName === "kula" || characterName === "bison" 
+                      ? -250 // Back to off-screen left for Kyo
                       : pageDimensions.width + 300 // Back to off-screen right for Iori
                     : pageDimensions.width / 2 -
-                      (characterName === "kyo" || characterName === "kula"
-                        ? 300
-                        : -300), // Near-center position
+                      (characterName === "kyo" || characterName === "kula" || characterName === "bison" 
+                        ? 250
+                        : -250), // Near-center position
               }}
               transition={{ duration: 1.5 }}
               onAnimationComplete={() => {
@@ -215,6 +215,13 @@ function App() {
                     position: "absolute",
                     top: 0,
                     left: `${pageDimensions.width / 2 - 300}px`, // Set to final position when standing
+                    cursor: characterState === "final" ? "pointer" : "auto",
+                  };
+                } else if (characterName === "bison") {
+                  return {
+                    position: "absolute",
+                    top: 0,
+                    left: `${pageDimensions.width / 2 - 250}px`, // Set to final position when standing
                     cursor: characterState === "final" ? "pointer" : "auto",
                   };
                 } else {

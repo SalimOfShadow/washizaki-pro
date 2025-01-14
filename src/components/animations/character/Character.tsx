@@ -24,6 +24,7 @@ import kulaFinalGif from "../../../assets/characters-gif/kula/kula-final.gif";
 import bisonRunningGif from "../../../assets/characters-gif/bison/bison-running.gif";
 import bisonStandingGif from "../../../assets/characters-gif/bison/bison-winpose.gif";
 import bisonNeomaxGif from "../../../assets/characters-gif/bison/bison-neomax.gif";
+import bisonScissorGif from "../../../assets/characters-gif/bison/bison-scissor.gif";
 import bisonFinalGif from "../../../assets/characters-gif/bison/bison-final.gif";
 
 import "./character.css";
@@ -56,6 +57,8 @@ export const Character: React.FC = () => {
       standing: kyoStandingGif,
       final: kyoFinalGif,
       "running-back": kyoRunningGif,
+      scissor: bisonScissorGif,
+      turning: bisonScissorGif
     },
     iori: {
       running: ioriRunningGif,
@@ -63,6 +66,8 @@ export const Character: React.FC = () => {
       standing: ioriStandingGif,
       final: ioriFinalGif,
       "running-back": ioriRunningGif,
+      scissor: bisonScissorGif,
+      turning: bisonScissorGif
     },
     kula: {
       running: kulaRunningGif,
@@ -70,6 +75,8 @@ export const Character: React.FC = () => {
       standing: kulaStandingGif,
       final: kulaFinalGif,
       "running-back": kulaRunningGif,
+      scissor: bisonScissorGif,
+      turning: bisonScissorGif
     },
     bison: {
       running: bisonRunningGif,
@@ -77,6 +84,8 @@ export const Character: React.FC = () => {
       standing: bisonStandingGif,
       final: bisonFinalGif,
       "running-back": bisonRunningGif,
+      scissor: bisonScissorGif,
+      turning: bisonScissorGif
     },
   };
 
@@ -107,6 +116,16 @@ export const Character: React.FC = () => {
       setTimeout(() => {
         setCharacterState("standing");
       }, 1600);
+    
+      // Bison's timing
+    if (characterState === "neomax" && characterName === "bison")
+      
+      setTimeout(() => {
+        setCharacterState("scissor")   
+        setTimeout(() => {
+          setCharacterState("standing");
+        }, 1200);
+      },1000)
 
     // Neomax to Final
     if (characterState === "standing" && characterName !== "kula") {
@@ -153,7 +172,26 @@ export const Character: React.FC = () => {
         <Foxy animationState="active" />
         // <Snowman animationState="active" />
       )}
-      <motion.div>
+      {/* Bison's effect */}
+      
+      {/* Iori's effect */}
+      {characterState === "neomax" && characterName === "bison" && (
+        <Scratch animationState="active" />
+      )}
+    
+    <motion.div
+  initial={{ x: 0 }} // initial position
+  animate={{
+    x: (characterName === 'bison' && (characterState === 'neomax' || characterState === 'scissor'))
+      ? [0, 600, 600, 0]  // Keyframe sequence: move to 600px, idle, then return to 0px
+      : 0  // No movement if conditions don't match
+  }}
+  transition={{
+    duration: 2, // Total duration for the animation
+    ease: 'easeInOut', // Smooth easing for both moves
+    times: [0, 0.2, 0.4, 0.6, 0.8, 1], // Smooth transition between keyframes
+  }}
+>
         <img
           src={getGif(characterName, characterState)}
           alt={`Character is ${characterState}`}

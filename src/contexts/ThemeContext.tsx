@@ -1,6 +1,6 @@
 import { CookiesProvider, useCookies } from "react-cookie";
 // Define the types of themes
-export type Theme = "blue" | "red" | "aqua" | "yellow";
+export type Theme = "blue" | "red" | "aqua" | "magenta";
 
 // Interface for the context state
 interface ThemeContextState {
@@ -21,21 +21,21 @@ export const themeStyles = {
   blue: "#394cfa",
   red: "#fa3939",
   aqua: "#00ffd9",
-  yellow: "#ffff00",
+  magenta: "#ffff00",
 };
 
 export const darkThemeStyles = {
   blue: "#0f5f94",
   red: "#a62525",
   aqua: "#008b8b", // Darker shade of aqua (dark cyan)
-  yellow: "#9f9f00",
+  magenta: "#9f9f00",
 };
 
 export const themeShadows = {
   blue: "rgba(24, 117, 223, 0.5)", // Adjusted for shadow effect
   red: "rgba(135, 47, 31, 0.5)",
   aqua: "rgba(0, 255, 255, 0.5)", // Aqua shadow with opacity
-  yellow: "rgba(255, 255, 0, 0.5)",
+  magenta: "rgba(255, 255, 0, 0.5)",
 };
 
 // Create the Theme Context
@@ -73,7 +73,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     );
     setCookie("theme", newCookies.theme, { path: "/" });
     setCookie("character", newCookies.character, { path: "/" });
-    setTheme(newCookies.theme as Theme);
+    setTheme("magenta" as Theme);
     setCharacterName(newCookies.character as CharacterName);
   }, [theme]);
 
@@ -94,25 +94,30 @@ export const useTheme = (): ThemeContextState => {
 };
 
 export function changeTheme(character?: CharacterName, theme?: Theme): Theme {
-  const themeArray: Theme[] = ["blue", "red", "aqua"];
-  if (character && !theme) {
-    switch (character) {
-      case "kyo": {
-        return themeArray[themeArray.indexOf("blue")];
-      }
-      case "iori": {
-        return themeArray[themeArray.indexOf("red")];
-      }
-      case "kula": {
-        return themeArray[themeArray.indexOf("aqua")];
-      }
-    }
-  } else {
-    if (theme) {
-      const themeArray: Theme[] = ["blue", "red", "aqua"];
-      return themeArray[(themeArray.indexOf(theme) + 1) % themeArray.length];
-    } else {
-      return themeArray[0];
-    }
-  }
-}
+return "magenta"}
+
+  //   const themeArray: Theme[] = ["blue", "red", "aqua","magenta"];
+//   if (character && !theme) {
+//     switch (character) {
+//       case "kyo": {
+//         return themeArray[themeArray.indexOf("blue")];
+//       }
+//       case "iori": {
+//         return themeArray[themeArray.indexOf("red")];
+//       }
+//       case "kula": {
+//         return themeArray[themeArray.indexOf("aqua")];
+//       }
+//       case "bison": {
+//         return themeArray[themeArray.indexOf("magenta")]
+//       }
+//     }
+//   } else {
+//     if (theme) {
+//       const themeArray: Theme[] = ["blue", "red", "aqua","magenta"];
+//       return themeArray[(themeArray.indexOf(theme) + 1) % themeArray.length];
+//     } else {
+//       return themeArray[0];
+//     }
+//   }
+// }

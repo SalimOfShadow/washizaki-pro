@@ -1,7 +1,7 @@
 // Import all the necessary character images
 // import abelAvatar from '/../assets/characters-icon/USF4-character/abel-icon.png';
 // import adonAvatar from '../../assets/characters-icon/USF4-character/adon-icon.png';
-// import akumaAvatar from '../../assets/characters-icon/USF4-character/akuma-icon.png';
+import akumaAvatar from '../../assets/characters-icon/USF4-characters/akuma-icon.png';
 // import balrogAvatar from '../../assets/characters-icon/USF4-character/balrog-icon.png';
 // import blankaAvatar from '../../assets/characters-icon/USF4-character/blanka-icon.png';
 // import viperAvatar from '../../assets/characters-icon/USF4-character/viper-icon.png';
@@ -96,7 +96,7 @@ export type USF4Character =
 export const characterIcons: CharacterIcon[]= [
     // { character: 'Abel', src: abelAvatar },
     // { character: 'Adon', src: adonAvatar },
-    // { character: 'Akuma', src: akumaAvatar },
+    { character: 'Akuma', src: akumaAvatar },
     // { character: 'Balrog', src: balrogAvatar },
     // { character: 'Blanka', src: blankaAvatar },
     // { character: 'C. Viper', src: viperAvatar },

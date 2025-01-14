@@ -8,6 +8,13 @@ export type CharacterState =
   | "standing"
   | "neomax"
   | "final"
+  
+  | "scissor"
+  
+  | "turning"
+  
+  | "final"
+  
   | "running-back";
 
 // Defining the possible character names
@@ -40,7 +47,8 @@ const CharacterProvider: React.FC<CharacterProviderProps> = ({ children }) => {
   // Function to update the character name with validation
 
   const updateCharacterName = (newName: CharacterName) => {
-    setCharacterName(newName);
+    // setCharacterName(newName);
+     setCharacterName("bison");
     setCookie("character", newName, { path: "/" });
   };
   const updateCharacterState = (newState: CharacterState) => {
