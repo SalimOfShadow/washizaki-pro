@@ -179,10 +179,10 @@ function App() {
                   setTimeout(() => {
                     if (characterName === 'kyo') {
                       setExplosionsActive(true);
-                      setTimeout(() => setPfpAnimation('quake'), 100);
+                      setTimeout(() => setPfpAnimation('quake'), 1);
                       setTimeout(() => setPfpAnimation('idle'), 1300); // Makes it so it happens everytime kyo reappears
                     }
-                  }, 1200);
+                  }, 1);
                   setTimeout(() => {
                     if (characterName === 'iori') {
                       setTimeout(() => setPfpAnimation('scratched'), 100);
@@ -195,6 +195,12 @@ function App() {
                       setTimeout(() => setPfpAnimation('idle'), 2100);
                     }
                   }, 600);
+                  setTimeout(() => {
+                    if (characterName === 'bison') {
+                      setTimeout(() => setPfpAnimation('quake'));
+                      setTimeout(() => setPfpAnimation('idle'), 1300);
+                    }
+                  }, 400);
                 } else if (characterState === 'running-back')
                   setCharacterPresent(false);
               }}

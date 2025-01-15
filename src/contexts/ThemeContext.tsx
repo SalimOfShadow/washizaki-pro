@@ -1,6 +1,6 @@
 import { CookiesProvider, useCookies } from 'react-cookie';
 // Define the types of themes
-export type Theme = 'magenta';
+export type Theme = 'blue' | 'red' | 'aqua' | 'magenta';
 
 // Interface for the context state
 interface ThemeContextState {
@@ -9,7 +9,7 @@ interface ThemeContextState {
 }
 
 // Default values for the context
-const themeArray: Theme[] = ['magenta'];
+const themeArray: Theme[] = ['blue', 'red', 'aqua', 'magenta'];
 
 const defaultTheme: Theme = 'magenta';
 const defaultState: ThemeContextState = {
@@ -62,7 +62,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const { characterName, setCharacterName } = useCharacter();
   const [theme, setTheme] = useState<Theme>(
     themeArray[(themeArray.indexOf(cookies.theme) + 1) % themeArray.length] ||
-      'blue'
+      'magenta'
   );
 
   useEffect(() => {
@@ -71,8 +71,8 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       theme,
       characterName
     );
-    setCookie('theme', newCookies.theme, { path: '/' });
-    setCookie('character', newCookies.character, { path: '/' });
+    setCookie('theme', 'magenta', { path: '/' });
+    setCookie('character', 'bison', { path: '/' });
     setTheme('magenta' as Theme);
     setCharacterName(newCookies.character as CharacterName);
   }, [theme]);
