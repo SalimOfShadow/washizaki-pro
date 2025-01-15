@@ -54,9 +54,8 @@
   z-index: 9999;
 }
 .bison-character-image {
-  width: 170px;
   max-width: 200px;
-  height: 170px;
+  height: 180px;
   max-height: 200px;
   z-index: 9999;
 }

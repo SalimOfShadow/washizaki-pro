@@ -152,37 +152,15 @@ export const Character: React.FC = () => {
   return (
     <div
       className={characterName + '-character'}
-      style={
-        characterName === 'iori' && characterState === 'neomax'
-          ? { top: '-35px' }
-          : {}
-      }
+      // style={
+      //   characterName === 'bison' && characterState === 'running'
+      //     ? { width: '9px', height: '42px' }
+      //     : {}
+      // }
     >
-      {/* Kyo's effect */}
-      {characterState === 'neomax' && characterName === 'kyo' && (
-        <FireRing animationState="active"></FireRing>
-      )}
-
-      {/* Iori's effect */}
-      {characterState === 'neomax' && characterName === 'iori' && (
-        <Scratch animationState="active" />
-      )}
-
-      {/* Kula's effect */}
-      {characterState === 'neomax' && characterName === 'kula' && (
-        <Breath animationState="active" />
-      )}
-      {foxyPresent && characterName === 'kula' && (
-        <Foxy animationState="active" />
-        // <Snowman animationState="active" />
-      )}
       {/* Bison's effect */}
       {characterState === 'neomax' && characterName === 'bison' && (
         <PsychoCrusher animationState="active" />
-      )}
-      {/* Iori's effect */}
-      {characterState === 'neomax' && characterName === 'bison' && (
-        <Scratch animationState="active" />
       )}
 
       <motion.div

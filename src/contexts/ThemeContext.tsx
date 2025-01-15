@@ -1,6 +1,6 @@
-import { CookiesProvider, useCookies } from "react-cookie";
+import { CookiesProvider, useCookies } from 'react-cookie';
 // Define the types of themes
-export type Theme = "blue" | "red" | "aqua" | "magenta";
+export type Theme = 'magenta';
 
 // Interface for the context state
 interface ThemeContextState {
@@ -9,33 +9,33 @@ interface ThemeContextState {
 }
 
 // Default values for the context
-const themeArray: Theme[] = ["blue", "red", "aqua"];
+const themeArray: Theme[] = ['magenta'];
 
-const defaultTheme: Theme = "blue";
+const defaultTheme: Theme = 'magenta';
 const defaultState: ThemeContextState = {
   theme: defaultTheme,
   setTheme: () => {}, // Placeholder function
 };
 
 export const themeStyles = {
-  blue: "#394cfa",
-  red: "#fa3939",
-  aqua: "#00ffd9",
-  magenta: "#ffff00",
+  blue: '#394cfa',
+  red: '#fa3939',
+  aqua: '#00ffd9',
+  magenta: '#E0115F',
 };
 
 export const darkThemeStyles = {
-  blue: "#0f5f94",
-  red: "#a62525",
-  aqua: "#008b8b", // Darker shade of aqua (dark cyan)
-  magenta: "#9f9f00",
+  blue: '#0f5f94',
+  red: '#a62525',
+  aqua: '#008b8b', // Darker shade of aqua (dark cyan)
+  magenta: '#9f9f00',
 };
 
 export const themeShadows = {
-  blue: "rgba(24, 117, 223, 0.5)", // Adjusted for shadow effect
-  red: "rgba(135, 47, 31, 0.5)",
-  aqua: "rgba(0, 255, 255, 0.5)", // Aqua shadow with opacity
-  magenta: "rgba(255, 255, 0, 0.5)",
+  blue: 'rgba(24, 117, 223, 0.5)', // Adjusted for shadow effect
+  red: 'rgba(135, 47, 31, 0.5)',
+  aqua: 'rgba(0, 255, 255, 0.5)', // Aqua shadow with opacity
+  magenta: 'rgba(139, 0, 139, 0.5)',
 };
 
 // Create the Theme Context
@@ -45,9 +45,9 @@ import React, {
   useState,
   ReactNode,
   useEffect,
-} from "react";
-import { CharacterName, useCharacter } from "./CharacterContext";
-import { validateCookies } from "../utils/cookieValidation";
+} from 'react';
+import { CharacterName, useCharacter } from './CharacterContext';
+import { validateCookies } from '../utils/cookieValidation';
 
 const ThemeContext = createContext<ThemeContextState>(defaultState);
 
@@ -58,22 +58,22 @@ interface ThemeProviderProps {
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   // cookies.theme we can access the cookie like this,and select the next possible theme
-  const [cookies, setCookie] = useCookies(["theme", "character"]);
+  const [cookies, setCookie] = useCookies(['theme', 'character']);
   const { characterName, setCharacterName } = useCharacter();
   const [theme, setTheme] = useState<Theme>(
     themeArray[(themeArray.indexOf(cookies.theme) + 1) % themeArray.length] ||
-      "blue"
+      'blue'
   );
 
   useEffect(() => {
-    console.log("Setting theme cookie");
+    console.log('Setting theme cookie');
     const newCookies: { theme: string; character: string } = validateCookies(
       theme,
       characterName
     );
-    setCookie("theme", newCookies.theme, { path: "/" });
-    setCookie("character", newCookies.character, { path: "/" });
-    setTheme("magenta" as Theme);
+    setCookie('theme', newCookies.theme, { path: '/' });
+    setCookie('character', newCookies.character, { path: '/' });
+    setTheme('magenta' as Theme);
     setCharacterName(newCookies.character as CharacterName);
   }, [theme]);
 
@@ -88,15 +88,16 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 export const useTheme = (): ThemeContextState => {
   const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
+    throw new Error('useTheme must be used within a ThemeProvider');
   }
   return context;
 };
 
 export function changeTheme(character?: CharacterName, theme?: Theme): Theme {
-return "magenta"}
+  return 'magenta';
+}
 
-  //   const themeArray: Theme[] = ["blue", "red", "aqua","magenta"];
+//   const themeArray: Theme[] = ["blue", "red", "aqua","magenta"];
 //   if (character && !theme) {
 //     switch (character) {
 //       case "kyo": {

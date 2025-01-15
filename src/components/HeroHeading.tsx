@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useTheme } from "../contexts/ThemeContext";
+import React, { useEffect, useState, useRef } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 const totype = [
-  "Washizaki 👋",
-  "A Street Fighter IV Enthusiast 🤖",
-  "A M. Bison main 🌐",
-  "Always down for a fight 🥋",
-  "A US East Coast Player ❤️",
-  "A Gamer 🕹️",
+  'Washizaki 👋',
+  'A Street Fighter IV Enthusiast 🥊',
+  'A M. Bison main 🌐',
+  'Always down for a fight 🥋',
+  'A US East Coast Player ❤️',
+  'A Gamer 🕹️',
 ];
 
 const delayTyping_char = 70;
@@ -18,26 +18,16 @@ let charIndex = 0;
 
 const HeroHeading = () => {
   const { theme } = useTheme();
-  const [currentColor, setCurrentColor] = useState<string>("#394cfa");
+  const [currentColor, setCurrentColor] = useState<string>('#394cfa');
   const typedSpanRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     switch (theme) {
-      case "blue":
-        setCurrentColor("#394cfa");
-        break;
-      case "red":
-        setCurrentColor("#c61b05");
-        break;
-      case "aqua":
-        setCurrentColor("#3ed1a3");
-
-        break;
-      case "yellow":
-        setCurrentColor("yellow");
+      case 'magenta':
+        setCurrentColor('#E0115F');
         break;
       default:
-        setCurrentColor("#394cfa");
+        setCurrentColor('#394cfa');
         break;
     }
   }, [theme]);
@@ -94,7 +84,7 @@ const HeroHeading = () => {
 
     // Remove any existing blinker rule (if re-rendered)
     Array.from(styleSheet.cssRules).forEach((rule, index) => {
-      if (rule instanceof CSSKeyframesRule && rule.name === "blinker") {
+      if (rule instanceof CSSKeyframesRule && rule.name === 'blinker') {
         styleSheet.deleteRule(index);
       }
     });
@@ -105,7 +95,7 @@ const HeroHeading = () => {
 
   return (
     <div className="wrapper">
-      <h1 className="effect-wrapper" style={{ marginTop: "30px" }}>
+      <h1 className="effect-wrapper" style={{ marginTop: '30px' }}>
         I am <br />
         <span
           id="typed"
@@ -115,7 +105,7 @@ const HeroHeading = () => {
         <span
           className="cursor"
           style={{
-            animation: "blinker 800ms infinite",
+            animation: 'blinker 800ms infinite',
           }}
         >
           &nbsp;
