@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import "./psycho-crusher.css";
-import psychoCrusherImage from "./psycho-crusher.gif";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from 'react';
+import './psycho-crusher.css';
+import psychoCrusherImage from './psycho-crusher.gif';
+import { motion } from 'framer-motion';
 
-type PsychoCrusherState = "active" | "inactive";
+type PsychoCrusherState = 'active' | 'inactive';
 
 type PsychoCrusherProps = {
   animationState: PsychoCrusherState;
@@ -16,25 +16,36 @@ export const PsychoCrusher = (props: PsychoCrusherProps) => {
 
   const [psychoActive, setPsychoActive] = useState<boolean>(false);
 
-  if (animationState === "active") {
+  useEffect(() => {
+    if (psychoActive === false) {
+      setTimeout(() => {
+        setPsychoActive(true);
+      }, 180);
+    }
+  }, [psychoActive]);
+
+  if (animationState === 'active') {
     setTimeout(() => {
-      setAnimationState("inactive");
-    }, 1800);
+      setAnimationState('inactive');
+    }, 1100);
   }
   return (
     <>
-      {animationState === "active" && (
-        <div className="PsychoCrusher">
-          <motion.div>
+      {animationState === 'active' && psychoActive && (
+        <div className="psycho-crusher">
+          <motion.div
+            initial={{ x: -140, opacity: 0.85 }}
+            animate={{ x: 385, opacity: 0.85 }}
+            transition={{ duration: 1.1 }}
+          >
             <img
               src={psychoCrusherImage}
-              alt="PsychoCrusher"
-              className="PsychoCrusher-img"
+              alt="Psycho Crusher"
+              className="psycho-crusher-img"
             />
           </motion.div>
         </div>
       )}
-      <PsychoCrusher animationState="active"></PsychoCrusher>
     </>
   );
 };

@@ -35,6 +35,7 @@ import { Breath } from '../kula/breath/Breath';
 import { Snowman } from '../kula/snowman/Snowman';
 import { useState } from 'react';
 import { Foxy } from '../kula/foxy/Foxy';
+import { PsychoCrusher } from '../bison/psycho-crusher/PsychoCrusher';
 
 export type CharacterName = 'kyo' | 'iori' | 'kula' | 'bison';
 
@@ -125,7 +126,7 @@ export const Character: React.FC = () => {
         setTimeout(() => {
           setCharacterState('scissor'); // Change to 'scissor' after another 1.2 seconds
           setTimeout(() => {
-            setCharacterState('standing'); // Change to 'standing' after 1.2 seconds from 'scissor'
+            setCharacterState('standing'); // Change to 'standing' after 0.8 seconds from 'scissor'
           }, 800);
         }, 1200);
       }, 1200); // Delay before changing to 'turning'
@@ -176,7 +177,9 @@ export const Character: React.FC = () => {
         // <Snowman animationState="active" />
       )}
       {/* Bison's effect */}
-
+      {characterState === 'neomax' && characterName === 'bison' && (
+        <PsychoCrusher animationState="active" />
+      )}
       {/* Iori's effect */}
       {characterState === 'neomax' && characterName === 'bison' && (
         <Scratch animationState="active" />

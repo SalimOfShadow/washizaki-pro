@@ -1,0 +1,12 @@
+.psycho-crusher {
+  position: absolute;
+  transform: translateY(-20%);
+  z-index: 9999;
+}
+
+.psycho-crusher-img {
+  width: 570px;
+  position: relative;
+  transform: translateX(-80px);
+  z-index: 9999;
+}
