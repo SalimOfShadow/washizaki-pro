@@ -39,12 +39,10 @@ const Hero = (props: HeroProps) => {
   );
 
   useEffect(() => {
-    if (psychoGlowActive) {
-      setTimeout(() => {
-        setPsychoGlowActive(false);
-      }, 1750);
-    }
-  });
+    setTimeout(() => {
+      setPsychoGlowActive(false);
+    }, 1750);
+  }, [psychoGlowActive]);
 
   useEffect(() => {
     if (pageDimensions.width < 1242) {
@@ -58,6 +56,7 @@ const Hero = (props: HeroProps) => {
     if (props.characterState === 'final' || isPageMobile) {
       setOpacity(1);
       setCanInteract(true);
+      setPsychoGlowActive(false);
     } else {
       setOpacity(0);
       setBrightness('100%');
@@ -72,7 +71,10 @@ const Hero = (props: HeroProps) => {
       case 'quake':
         setPfpStatus('quake');
         setPsychoGlowActive(true);
+        console.log('SHOULD FIRE SCISSOR');
+        setTimeout(() => setPfpStatus('idle'), 2600);
         setTimeout(() => setPfpStatus('psychoGlow'), 600);
+        setTimeout(() => setPfpStatus('scissor'), 2300);
         break;
 
       case 'scratched':
@@ -84,12 +86,6 @@ const Hero = (props: HeroProps) => {
       case 'frozen':
         setPfpStatus('frozen');
         setTimeout(() => setPfpStatus('idle'), 1900);
-        break;
-      case 'psychoGlow':
-        setTimeout(() => setPfpStatus('scissor'), 800);
-        break;
-      case 'scissor':
-        setTimeout(() => setPfpStatus('idle'), 1800);
         break;
       default:
         setPfpStatus(props.status);
@@ -262,7 +258,7 @@ const Hero = (props: HeroProps) => {
             />
           </motion.div>
         )}
-        {psychoGlowActive && (
+        {(psychoGlowActive || props.status === 'psychoGlow') && (
           <motion.div
             key="psychoGlow"
             initial={{ scale: 0.4, opacity: 0.5 }}

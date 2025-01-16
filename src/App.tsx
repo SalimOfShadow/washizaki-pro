@@ -198,7 +198,7 @@ function App() {
                   setTimeout(() => {
                     if (characterName === 'bison') {
                       setTimeout(() => setPfpAnimation('quake'));
-                      // setTimeout(() => setPfpAnimation('idle'), 2100); ADD THE FINAL IDLE
+                      setTimeout(() => setPfpAnimation('idle'), 2100); // TODO - fix issue that causes the animation not to restart
                     }
                   }, 400);
                 } else if (characterState === 'running-back')
