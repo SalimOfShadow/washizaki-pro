@@ -14,3 +14,19 @@
   transition: 0.3s;
   overflow: visible;
 }
+.psycho-glow-image {
+  position: absolute;
+  width: 390px;
+  margin-left: -266px;
+  margin-top: -252px;
+  transition: 0.3s;
+  overflow: visible;
+}
+.psycho-frozen-image {
+  position: absolute;
+  width: 270px;
+  margin-left: -161px;
+  margin-top: -82px;
+  transition: 0.3s;
+  overflow: visible;
+}

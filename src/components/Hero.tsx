@@ -1,14 +1,22 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { AnimatePresence, motion } from "framer-motion";
-import { CharacterState } from "../contexts/CharacterContext";
-import glowAnimation from "./animations/profile-picture/glow-effect.gif";
-import frozenAnimation from "./animations/profile-picture/frozen-effect.gif";
-import "./animations/profile-picture/profile-animation.css";
-import useWindowDimensions from "../utils/useWindowDimensions";
-import { changeTheme, useTheme } from "../contexts/ThemeContext";
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { AnimatePresence, motion } from 'framer-motion';
+import { CharacterState } from '../contexts/CharacterContext';
+import glowAnimation from './animations/profile-picture/glow-effect.gif';
+import frozenAnimation from './animations/profile-picture/frozen-effect.gif';
+import psychoGlowAnimation from './animations/bison/psycho-glow/psycho-glow.gif';
+import './animations/profile-picture/profile-animation.css';
+import useWindowDimensions from '../utils/useWindowDimensions';
+import { changeTheme, useTheme } from '../contexts/ThemeContext';
 
-export type PfpAnimation = "idle" | "quake" | "scratched" | "frozen";
+export type PfpAnimation =
+  | 'idle'
+  | 'quake'
+  | 'scratched'
+  | 'frozen'
+  | 'psychoGlow'
+  | 'scissor';
+
 interface HeroProps {
   img: string;
   description: string;
@@ -21,14 +29,23 @@ const Hero = (props: HeroProps) => {
   const [pfpStatus, setPfpStatus] = useState<string>(props.status);
   const [canInteract, setCanInteract] = useState<boolean>(false);
   const [opacity, setOpacity] = useState<number>(0);
-  const [brightness, setBrightness] = useState<string>("100%");
+  const [brightness, setBrightness] = useState<string>('100%');
   const { theme, setTheme } = useTheme();
-
+  const [psychoGlowActive, setPsychoGlowActive] = useState<boolean>(false);
   const pageDimensions: { width: number; height: number } =
     useWindowDimensions();
   const [isPageMobile, setIsPageMobile] = useState<boolean>(
     pageDimensions.width < 1242 ? true : false
   );
+
+  useEffect(() => {
+    if (psychoGlowActive) {
+      setTimeout(() => {
+        setPsychoGlowActive(false);
+      }, 1750);
+    }
+  });
+
   useEffect(() => {
     if (pageDimensions.width < 1242) {
       setIsPageMobile(true);
@@ -38,12 +55,12 @@ const Hero = (props: HeroProps) => {
   }, [pageDimensions.width]);
 
   useEffect(() => {
-    if (props.characterState === "final" || isPageMobile) {
+    if (props.characterState === 'final' || isPageMobile) {
       setOpacity(1);
       setCanInteract(true);
     } else {
       setOpacity(0);
-      setBrightness("100%");
+      setBrightness('100%');
       setTimeout(() => {
         setCanInteract(false);
       }, 400);
@@ -52,22 +69,28 @@ const Hero = (props: HeroProps) => {
 
   useEffect(() => {
     switch (props.status) {
-      case "quake":
-        setPfpStatus("quake");
-        setTimeout(() => setPfpStatus("idle"), 1400);
+      case 'quake':
+        setPfpStatus('quake');
+        setPsychoGlowActive(true);
+        setTimeout(() => setPfpStatus('psychoGlow'), 600);
         break;
 
-      case "scratched":
+      case 'scratched':
         currentRotation -= 360;
-        setPfpStatus("scratched");
-        setTimeout(() => setPfpStatus("idle"), 1400);
+        setPfpStatus('scratched');
+        setTimeout(() => setPfpStatus('idle'), 1400);
         break;
 
-      case "frozen":
-        setPfpStatus("frozen");
-        setTimeout(() => setPfpStatus("idle"), 1900);
+      case 'frozen':
+        setPfpStatus('frozen');
+        setTimeout(() => setPfpStatus('idle'), 1900);
         break;
-
+      case 'psychoGlow':
+        setTimeout(() => setPfpStatus('scissor'), 800);
+        break;
+      case 'scissor':
+        setTimeout(() => setPfpStatus('idle'), 1800);
+        break;
       default:
         setPfpStatus(props.status);
         break;
@@ -100,7 +123,7 @@ const Hero = (props: HeroProps) => {
         currentRotation - 10,
         currentRotation,
       ],
-      transition: { duration: 0.32, repeat: Infinity, ease: "easeInOut" },
+      transition: { duration: 0.32, repeat: Infinity, ease: 'easeInOut' },
       scale: 1,
     },
     scratched: {
@@ -117,7 +140,7 @@ const Hero = (props: HeroProps) => {
       rotate: [0, -360],
       transition: {
         duration: 1.15,
-        ease: "easeInOut",
+        ease: 'easeInOut',
       },
       scale: 1,
     },
@@ -129,8 +152,35 @@ const Hero = (props: HeroProps) => {
         -10, 10, -5, 5, 0, 0, -10, 10, -5, 5, 0, -10, 10, -5, 5, 0,
       ],
       rotate: [currentRotation],
-      transition: { duration: 2.52, repeat: Infinity, ease: "easeInOut" },
+      transition: { duration: 2.52, repeat: Infinity, ease: 'easeInOut' },
       scale: [1, 1, , 1, 1.1, 1.1, 1],
+    },
+    psychoGlow: {
+      x: 0,
+      y: 0,
+      rotate: currentRotation,
+      scale: 1,
+    },
+    scissor: {
+      x: [0, -10, 10, -5, 5, 0],
+      y: [0, -10, 5, 10, -5, 0],
+      rotate: [
+        currentRotation,
+        currentRotation + 10,
+        currentRotation + 20,
+        currentRotation + 30,
+        currentRotation + 20,
+        currentRotation + 10,
+        currentRotation,
+        currentRotation - 10,
+        currentRotation - 20,
+        currentRotation - 30,
+        currentRotation - 20,
+        currentRotation - 10,
+        currentRotation,
+      ],
+      transition: { duration: 0.32, repeat: Infinity, ease: 'easeInOut' },
+      scale: 1,
     },
   };
 
@@ -141,20 +191,20 @@ const Hero = (props: HeroProps) => {
         animate={pfpStatus}
         variants={animations}
         transition={{
-          type: "spring",
+          type: 'spring',
           stiffness: 260,
           damping: 20,
         }}
         whileHover={
           canInteract && opacity !== 0
-            ? { scale: 1.2, filter: "brightness(115%)" }
+            ? { scale: 1.2, filter: 'brightness(115%)' }
             : { filter: `brightness(${brightness}) ` }
         }
         whileTap={
           canInteract
             ? {
                 scale: 1.25,
-                filter: "brightness(125%)",
+                filter: 'brightness(125%)',
               }
             : {}
         }
@@ -192,7 +242,7 @@ const Hero = (props: HeroProps) => {
             />
           </motion.div>
         )}
-        {pfpStatus === "frozen" && (
+        {pfpStatus === 'frozen' && (
           <motion.div
             key="frozen"
             initial={{ opacity: 0 }}
@@ -204,6 +254,25 @@ const Hero = (props: HeroProps) => {
               src={frozenAnimation}
               className="profile-frozen-image"
               alt="Frozen effect"
+              style={{ opacity: 1 }}
+              onClick={async () => {
+                return;
+              }}
+              draggable="false"
+            />
+          </motion.div>
+        )}
+        {psychoGlowActive && (
+          <motion.div
+            key="psychoGlow"
+            initial={{ scale: 0.4, opacity: 0.5 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <img
+              src={psychoGlowAnimation}
+              className="psycho-glow-image"
+              alt="PsychoGlow effect"
               style={{ opacity: 1 }}
               onClick={async () => {
                 return;

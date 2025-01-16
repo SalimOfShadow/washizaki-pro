@@ -198,7 +198,7 @@ function App() {
                   setTimeout(() => {
                     if (characterName === 'bison') {
                       setTimeout(() => setPfpAnimation('quake'));
-                      setTimeout(() => setPfpAnimation('idle'), 1300);
+                      // setTimeout(() => setPfpAnimation('idle'), 2100); ADD THE FINAL IDLE
                     }
                   }, 400);
                 } else if (characterState === 'running-back')
