@@ -15,7 +15,7 @@ const ProjectCard = (props) => {
   //   visible: { opacity: 1, transition: { duration: 0.8 } },
   // };
   const { width } = useWindowDimensions();
-  const [isMobile, setIsMobile] = React.useState<boolean>(width < 1242);
+  const [isMobile, setIsMobile] = React.useState<boolean>(width < 847.778);
 
   React.useEffect(() => {
     // Update isMobile whenever the window width changes
