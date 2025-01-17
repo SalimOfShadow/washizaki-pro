@@ -12,11 +12,11 @@ const ProjectCard = (props) => {
   //   hidden: { opacity: 0 },
   //   visible: { opacity: 1, transition: { duration: 0.8 } },
   // };
-  const {width} = useWindowDimensions();
-  const [isMobile,setIsMobile] = React.useState<boolean>(false)
+  const { width } = useWindowDimensions();
+  const [isMobile, setIsMobile] = React.useState<boolean>(false);
   React.useEffect(() => {
-    if (width < 1242) setIsMobile(true)
-  },[isMobile])
+    if (width < 1242) setIsMobile(true);
+  }, [isMobile]);
   return (
     <div
       className="project-card"
@@ -24,7 +24,7 @@ const ProjectCard = (props) => {
     >
       {/* TODO - FORCE A RERENDER ON ISMOBILE CHANGE */}
       <iframe
-        key={isMobile ? "mobile" : "desktop"}  // Change key to force re-render
+        key={isMobile ? "mobile" : "desktop"} // Change key to force re-render
         width={isMobile ? "350" : "560"}
         height="315"
         src={`https://www.youtube.com/embed/${props.id}?si=69LLkqKO5yUj1yBI`}
@@ -34,10 +34,15 @@ const ProjectCard = (props) => {
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen={true}
       ></iframe>
-    <ScoreResult  
-    p1Character="Bison" p2Character="Akuma" matchWon={false} roundsSetting={7} roundsWon={3} roundsLost={2}
-    />
-    
+      <ScoreResult
+        p1Character="Bison"
+        p2Character="Akuma"
+        winner={1}
+        roundsSetting={7}
+        roundsWon={4}
+        roundsLost={2}
+      />
+
       {/* <div className="project-tags">
         <div className="project-tag">
           {projects.stack.map((project, index) => (
