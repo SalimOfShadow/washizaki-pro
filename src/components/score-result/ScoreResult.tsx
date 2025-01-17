@@ -69,10 +69,13 @@ const ScoreResult = (props: ScoreResultProps) => {
 
 const PlayerScore = (props: any) => {
   const { width } = useWindowDimensions();
-  const [isMobile, setIsMobile] = React.useState<boolean>(false);
+  const [showRounds, setShowRounds] = React.useState<boolean>(false);
+
+  // Check window size and set the isMobile state
   React.useEffect(() => {
-    if (width < 1242) setIsMobile(true);
-  }, [isMobile]);
+    if (width < 847.778) setShowRounds(true);
+    else setShowRounds(false);
+  }, [width]); // Now we depend on width to handle window size change
 
   const playerScore = props.playerScore;
   const playerNumber: number = playerScore.playerNumber;
@@ -126,7 +129,10 @@ const PlayerScore = (props: any) => {
       {playerNumber === 1 ? (
         <div
           className="player-1-container"
-          style={{ gap: roundsNumber === 7 ? "5px" : "10px" }}
+          style={{
+            gap: roundsNumber === 7 ? "5px" : "10px",
+            marginLeft: showRounds ? "50px" : undefined,
+          }}
         >
           <div className="main-character-icon player-1 primary-icon">
             <img
@@ -135,15 +141,18 @@ const PlayerScore = (props: any) => {
               className={playerScore.hasWon ? "winning" : ""}
             />
           </div>
-          {!isMobile && roundsIconArray}
+          {!showRounds && roundsIconArray}
           {/* TODO : ADD NEW WIN / LOSS STATS */}
         </div>
       ) : (
         <div
           className="player-2-container"
-          style={{ gap: roundsNumber === 7 ? "5px" : "10px" }}
+          style={{
+            gap: roundsNumber === 7 ? "5px" : "10px",
+            marginRight: showRounds ? "50px" : undefined,
+          }}
         >
-          {!isMobile && roundsIconArray}
+          {!showRounds && roundsIconArray}
           <div className="main-character-icon player-2 primary-icon">
             <img
               alt="Main Character Icon"

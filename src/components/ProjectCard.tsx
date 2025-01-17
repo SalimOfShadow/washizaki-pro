@@ -5,7 +5,9 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import { themeShadows, useTheme } from "../contexts/ThemeContext";
 import ScoreResult from "./score-result/ScoreResult";
 import useWindowDimensions from "../utils/useWindowDimensions";
+import { YoutubePlayer } from "./YoutubePlayer";
 // import { motion } from "framer-motion";
+
 const ProjectCard = (props) => {
   const { theme, setTheme } = useTheme();
   // const containerVariants = {
@@ -13,27 +15,24 @@ const ProjectCard = (props) => {
   //   visible: { opacity: 1, transition: { duration: 0.8 } },
   // };
   const { width } = useWindowDimensions();
-  const [isMobile, setIsMobile] = React.useState<boolean>(false);
+  const [isMobile, setIsMobile] = React.useState<boolean>(width < 1242);
+
   React.useEffect(() => {
-    if (width < 1242) setIsMobile(true);
-  }, [isMobile]);
+    // Update isMobile whenever the window width changes
+    if (width < 1242) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [width]); // Depend on width to rerun effect when the window size changes
+
   return (
     <div
       className="project-card"
       style={{ boxShadow: `0 8px 32px 0 ${themeShadows[theme]}` }}
     >
-      {/* TODO - FORCE A RERENDER ON ISMOBILE CHANGE */}
-      <iframe
-        key={isMobile ? "mobile" : "desktop"} // Change key to force re-render
-        width={isMobile ? "350" : "560"}
-        height="315"
-        src={`https://www.youtube.com/embed/${props.id}?si=69LLkqKO5yUj1yBI`}
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer;fullscreen; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen={true}
-      ></iframe>
+      {/* Force a rerender when isMobile changes */}
+      <YoutubePlayer id={props.id} mobile={isMobile} />
       <ScoreResult
         p1Character="Bison"
         p2Character="Akuma"
@@ -42,7 +41,6 @@ const ProjectCard = (props) => {
         roundsWon={4}
         roundsLost={2}
       />
-
       {/* <div className="project-tags">
         <div className="project-tag">
           {projects.stack.map((project, index) => (
