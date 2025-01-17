@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-@import url('https://fonts.cdnfonts.com/css/technology?styles=26651');
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.cdnfonts.com/css/technology?styles=26651");
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 
 /* Arbitrary colors :  */
 
@@ -16,17 +16,17 @@
   color: hsl(161, 100%, 50%);
 }
 .magenta {
-  color: rgb(224, 17, 95);
+  color: #81079c;
 }
 
 :root {
-  --glow-color: hsl(219, 100%, 69%);
+  --glow-color: hsl(282, 100%, 31%);
 }
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   text-decoration: none;
   list-style: none;
 }
@@ -41,7 +41,7 @@ body {
   color: #fff;
   margin: 0;
   height: 100vh;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   overflow-x: hidden;
 }
 .profile-container {
@@ -82,7 +82,7 @@ body {
   -webkit-backdrop-filter: blur(6px);
   border: 1px 0 solid rgba(255, 255, 255, 0.18);
   z-index: 1;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
 }
 
 nav {
@@ -97,11 +97,11 @@ nav {
   font-size: 24px;
   font-weight: bold;
   color: rgb(239, 239, 239);
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
 }
 
 .logo a span {
-  color: #0f5f94;
+  color: #81079c;
 }
 
 .menu {
@@ -115,7 +115,7 @@ nav {
   padding: 7px 15px;
   font-size: 17px;
   font-weight: 500;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   transition: 0.2s all ease-in-out;
   color: rgb(255, 255, 255);
 }
@@ -170,7 +170,7 @@ nav {
     font-size: 20px;
     font-weight: bold;
     color: rgb(239, 239, 239);
-    font-family: 'Share Tech Mono', monospace;
+    font-family: "Share Tech Mono", monospace;
   }
 
   .logo a span {
@@ -195,13 +195,13 @@ nav {
 /* hero styles */
 .hero-text {
   display: flex;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   flex-direction: column;
   justify-content: center;
   margin-top: 50px;
 }
 .hero-text p {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   text-align: center;
   font-size: 20px;
 }
@@ -246,11 +246,11 @@ footer {
   width: 100%;
 }
 .footer p {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
 }
 .footer a {
   color: #fff;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
 }
 .heading h1 {
   font-size: 50px;
@@ -507,16 +507,16 @@ form > textarea {
   resize: none;
 }
 
-form > input[type='submit'] {
+form > input[type="submit"] {
   padding-left: 1%;
   padding-right: 1%;
   cursor: pointer;
   transition: 0.35s;
 }
 
-form > input[type='submit']:hover {
-  background-color: #0a17c7;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+form > input[type="submit"]:hover {
+  background-color: #81079c;
+  box-shadow: 0 8px 32px 0 rgba(129, 7, 156, 0.37);
 }
 .contact-section {
   margin-top: 20px;
@@ -602,16 +602,12 @@ form > input[type='submit']:hover {
   color: white;
 }
 .navbar-btn {
-  padding: 10px;
-  background-color: #394cfa;
-  border-radius: 10px;
-  transition: 0.2s all ease-in-out;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.6);
+  background-color: #81079c;
+  box-shadow: 0 8px 32px 0 rgba(129, 7, 156, 0.6);
 }
 .navbar-btn:hover {
-  transform: scale(1.1);
-  background-color: #0905f1;
-  box-shadow: 0 8px 32px 0 rgba(33, 31, 135, 0.8);
+  background-color: #600562;
+  box-shadow: 0 8px 32px 0 rgba(129, 7, 156, 0.8);
 }
 
 .wrapper {
@@ -629,14 +625,14 @@ form > input[type='submit']:hover {
 
 #typed {
   font-weight: bold;
-  color: #394cfa;
+  color: #81079c;
   line-height: 1.2; /* Match your overall text line height */
   transition: 0.2s;
 }
 
 .cursor {
   display: inline-block;
-  background-color: #394cfa;
+  background-color: #81079c;
   animation: blinker 800ms infinite;
   transition: 0.2s;
 }
@@ -647,13 +643,13 @@ form > input[type='submit']:hover {
 
 @keyframes blinker {
   0% {
-    background-color: #394cfa;
+    background-color: #81079c;
   }
   50% {
     background-color: transparent;
   }
   100% {
-    background-color: #394cfa;
+    background-color: #81079c;
   }
 }
 #blog {
@@ -687,16 +683,16 @@ form > input[type='submit']:hover {
   font-size: 30px;
   margin-top: 30px;
   padding: 10px;
-  background-color: #394cfa;
+  background-color: #600562;
   border-radius: 10px;
-  box-shadow: 0 8px 32px 0 rgba(31, 76, 135, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(129, 7, 156, 0.8);
   margin-bottom: 20px;
   transition: 0.2s all ease-in-out;
 }
 .cyber-scourge:hover {
   transform: scale(1.1);
-  background-color: #1505f1;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.8);
+  background-color: #600562;
+  box-shadow: 0 8px 32px 0 rgba(129, 7, 156, 0.8);
 }
 .hero-typewriter {
   display: flex;
@@ -708,10 +704,10 @@ form > input[type='submit']:hover {
   font-size: 40px;
 }
 .typewriter-wrapper span {
-  color: #394cfa;
+  color: #81079c;
 }
 .Typewriter__wrapper {
-  color: #394cfa;
+  color: #81079c;
   font-weight: 700;
 }
 @media (max-width: 768px) {
