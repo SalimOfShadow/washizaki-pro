@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 interface YoutubePlayerProps {
   id: string;
@@ -14,8 +14,8 @@ export const YoutubePlayer = (props: YoutubePlayerProps) => {
   return (
     <div>
       <iframe
-        key={isMobile ? "mobile" : "desktop"} // Change key to force re-render
-        width={isMobile ? "550" : "560"}
+        key={isMobile ? 'mobile' : 'desktop'} // Change key to force re-render
+        width={isMobile ? '550' : '560'}
         height="315"
         src={`https://www.youtube.com/embed/${props.id}?si=69LLkqKO5yUj1yBI`}
         title="YouTube video player"

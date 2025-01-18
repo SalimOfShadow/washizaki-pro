@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProjectCard from './components/ProjectCard';
 import Heading from './components/Heading';
-import videos from './content/videos';
+import { fetchVideos, VideoInfo } from './content/videos';
 import Skill from './components/Skill';
 import { skills } from './content/skills';
 import { motion, useAnimation } from 'framer-motion';
@@ -30,7 +30,8 @@ const characterArray: CharacterName[] = ['kyo', 'iori', 'kula'];
 
 function App() {
   const { theme, setTheme } = useTheme();
-
+  const [videos, setVideos] = useState<VideoInfo[]>([]);
+  const [videosReady, setVideosReady] = useState<boolean>(false);
   const projectControls = useAnimation();
   const skillControls = useAnimation();
 
@@ -68,6 +69,20 @@ function App() {
     }
     setCharacterState('running');
   }
+
+  useEffect(() => {
+    const loadVideos = async () => {
+      try {
+        const fetchedVideos = await fetchVideos();
+        setVideos(fetchedVideos);
+        setVideosReady(true);
+      } catch (error) {
+        console.error('Failed to load videos:', error);
+      }
+    };
+
+    loadVideos();
+  }, []); // Empty dependency array to run once when the component mounts
 
   useEffect(() => {
     if (!explosionsActive) return;
@@ -261,17 +276,20 @@ function App() {
           animate={projectControls}
           variants={containerVariants} // Enables staggerChildren
         >
-          {videos.map((video, index) => (
-            <motion.div key={index} variants={projectVariants}>
-              <ProjectCard
-                id={video.id}
-                myCharacter={video.myCharacter}
-                opponentsCharacter={video.opponentsCharacter}
-                timestamp={video.timeStamp || ''}
-                matchWon={video.matchWon}
-              />
-            </motion.div>
-          ))}
+          {videosReady &&
+            videos.map((video, index) => (
+              <motion.div key={index} variants={projectVariants}>
+                <ProjectCard
+                  videoId={video.videoId}
+                  myCharacter={video.myCharacter}
+                  opponentsCharacter={video.opponentsCharacter}
+                  roundsSetting={video.roundsSetting}
+                  roundsWon={video.roundsWon}
+                  roundsLost={video.roundsLost}
+                  matchWon={video.matchWon}
+                />
+              </motion.div>
+            ))}
         </motion.div>
       </section>
       <section id="skills">
