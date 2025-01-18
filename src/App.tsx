@@ -277,19 +277,24 @@ function App() {
           variants={containerVariants} // Enables staggerChildren
         >
           {videosReady &&
-            videos.map((video, index) => (
-              <motion.div key={index} variants={projectVariants}>
-                <ProjectCard
-                  videoId={video.videoId}
-                  myCharacter={video.myCharacter}
-                  opponentsCharacter={video.opponentsCharacter}
-                  roundsSetting={video.roundsSetting}
-                  roundsWon={video.roundsWon}
-                  roundsLost={video.roundsLost}
-                  matchWon={video.matchWon}
-                />
-              </motion.div>
-            ))}
+            videos.map(
+              (
+                video,
+                index // TODO - FIGURE OUT WHY THEY APPEAR AND REMAIN HIDDEN
+              ) => (
+                <motion.div key={index} variants={projectVariants}>
+                  <ProjectCard
+                    videoId={video.videoId}
+                    myCharacter={video.myCharacter}
+                    opponentsCharacter={video.opponentsCharacter}
+                    roundsSetting={video.roundsSetting}
+                    roundsWon={video.roundsWon}
+                    roundsLost={video.roundsLost}
+                    matchWon={video.matchWon}
+                  />
+                </motion.div>
+              )
+            )}
         </motion.div>
       </section>
       <section id="skills">
