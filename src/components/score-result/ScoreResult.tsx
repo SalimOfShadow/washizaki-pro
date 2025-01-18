@@ -2,9 +2,11 @@ import * as React from "react";
 import { Avatar } from "@mui/joy";
 import { motion } from "framer-motion";
 import { CharacterIcon, USF4Character, characterIcons } from "./USF4Character";
+
 import vsIcon from "../../assets/characters-icon/vs-icon.png";
 import winIcon from "../../assets/match-icon/win.png";
 import defeatIcon from "../../assets/match-icon/defeat.png";
+import unknownIcon from "../../assets/characters-icon/USF4-characters/unknown-icon.png";
 
 import "./score-result.css";
 import useWindowDimensions from "../../utils/useWindowDimensions";
@@ -41,7 +43,7 @@ const ScoreResult = (props: ScoreResultProps) => {
   const player1Score: PlayerScore = {
     playerNumber: 1,
     roundsNumber: props.roundsSetting,
-    character: p1Character,
+    character: p1Character || "UNKNOWN",
     hasWon: props.winner === 1 ? true : false,
     roundsWon: props.roundsWon,
     roundsLost: props.roundsLost,
@@ -50,7 +52,7 @@ const ScoreResult = (props: ScoreResultProps) => {
   const player2Score: PlayerScore = {
     playerNumber: 2,
     roundsNumber: props.roundsSetting,
-    character: p2Character,
+    character: p2Character || "UNKNOWN",
     hasWon: props.winner === 2 ? true : false,
     roundsWon: props.roundsWon,
     roundsLost: props.roundsLost,
@@ -137,7 +139,7 @@ const PlayerScore = (props: any) => {
           <div className="main-character-icon player-1 primary-icon">
             <img
               alt="Main Character Icon"
-              src={character.src}
+              src={character.src || unknownIcon}
               className={playerScore.hasWon ? "winning" : ""}
             />
           </div>
@@ -156,7 +158,7 @@ const PlayerScore = (props: any) => {
           <div className="main-character-icon player-2 primary-icon">
             <img
               alt="Main Character Icon"
-              src={character.src}
+              src={character.src || unknownIcon}
               className={playerScore.hasWon ? "winning" : ""}
             />
           </div>

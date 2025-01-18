@@ -1,11 +1,11 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import { FaGithub } from 'react-icons/fa';
-import { FaExternalLinkAlt } from 'react-icons/fa';
-import { themeShadows, useTheme } from '../contexts/ThemeContext';
-import ScoreResult from './score-result/ScoreResult';
-import useWindowDimensions from '../utils/useWindowDimensions';
-import { YoutubePlayer } from './YoutubePlayer';
+import * as React from "react";
+import PropTypes from "prop-types";
+import { FaGithub } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
+import { themeShadows, useTheme } from "../contexts/ThemeContext";
+import ScoreResult from "./score-result/ScoreResult";
+import useWindowDimensions from "../utils/useWindowDimensions";
+import { YoutubePlayer } from "./YoutubePlayer";
 // import { motion } from "framer-motion";
 
 const ProjectCard = (props) => {
@@ -53,12 +53,12 @@ const ProjectCard = (props) => {
 };
 
 ProjectCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  tags: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
-  source: PropTypes.string.isRequired,
-  preview: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  tags: PropTypes.string,
+  img: PropTypes.string,
+  source: PropTypes.string,
+  preview: PropTypes.string,
 };
 
 export default ProjectCard;
