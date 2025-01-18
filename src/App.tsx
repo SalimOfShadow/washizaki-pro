@@ -126,7 +126,7 @@ function App() {
   }, [skillControls, skillInView]);
 
   const containerVariants = {
-    hidden: {},
+    hidden: { opacity: 0 },
     visible: {
       transition: {
         staggerChildren: 0.3,
@@ -268,16 +268,16 @@ function App() {
       <div className="hr"></div>
       <HeroHeading></HeroHeading>
       <section id="projects">
-        <Heading firstWord="My" secondWord=" Highlights" />
-        <motion.div
-          className="project-map"
-          ref={projectRef}
-          initial="hidden"
-          animate={projectControls}
-          variants={containerVariants} // Enables staggerChildren
-        >
-          {videosReady &&
-            videos.map(
+        <Heading firstWord="My" secondWord="Highlights" />
+        {videosReady && (
+          <motion.div
+            className="project-map"
+            ref={projectRef}
+            initial="hidden"
+            animate={projectControls}
+            variants={containerVariants} // Enables staggerChildren
+          >
+            {videos.map(
               (
                 video,
                 index // TODO - FIGURE OUT WHY THEY APPEAR AND REMAIN HIDDEN
@@ -295,7 +295,8 @@ function App() {
                 </motion.div>
               )
             )}
-        </motion.div>
+          </motion.div>
+        )}
       </section>
       <section id="skills">
         <Heading firstWord="Recently" secondWord="Played" />
