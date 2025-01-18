@@ -45,7 +45,7 @@ const Skill = (props: { skill: string; url: string }) => {
         </motion.div>
       )}
       <img
-        src={`/skills/${props.skill}`}
+        src={`/games/${props.skill}`}
         alt=""
         className="skill-img"
         onClick={() => {

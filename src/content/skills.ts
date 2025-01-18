@@ -6,61 +6,43 @@ export const skills = [
     url: "https://store.steampowered.com/app/504230/Celeste/",
   },
   {
-    name: "python.svg",
+    name: "usf4.png",
+    url: "https://www.scala-lang.org/", // Adjust URL for the WIP status or keep it as placeholder
+  },
+  {
+    name: "kofxiii.png",
     url: "https://www.python.org/",
   },
   {
-    name: "scala-WIP.svg",
-    url: "https://www.scala-lang.org/", // Adjust URL for the WIP status or keep it as placeholder
-  },
-
-  {
-    name: "react.svg",
-    url: "https://react.dev/",
-  },
-  { name: "electron.svg", url: "https://www.electronjs.org" },
-  {
-    name: "framer-motion.svg",
-    url: "https://motion.dev/",
-  },
-
-  {
-    name: "nodejs.svg",
-    url: "https://nodejs.org/",
+    name: "kofxiii.png",
+    url: "https://www.python.org/",
   },
   {
-    name: "express.svg",
-    url: "https://expressjs.com/",
+    name: "kofxiii.png",
+    url: "https://www.python.org/",
   },
   {
-    name: "mongodb.svg",
-    url: "https://www.mongodb.com/",
+    name: "kofxiii.png",
+    url: "https://www.python.org/",
   },
   {
-    name: "redis.svg",
-    url: "https://redis.io/",
-  },
-
-  {
-    name: "docker.svg",
-    url: "https://www.docker.com/",
+    name: "kofxiii.png",
+    url: "https://www.python.org/",
   },
   {
-    name: "linux.svg",
-    url: "https://www.kernel.org/",
-  },
-
-  {
-    name: "git.svg",
-    url: "https://git-scm.com/",
+    name: "kofxiii.png",
+    url: "https://www.python.org/",
   },
   {
-    name: "puppeteer.svg",
-    url: "https://pptr.dev/",
+    name: "kofxiii.png",
+    url: "https://www.python.org/",
   },
-
   {
-    name: "opencv.svg",
-    url: "https://opencv.org/",
+    name: "kofxiii.png",
+    url: "https://www.python.org/",
+  },
+  {
+    name: "kofxiii.png",
+    url: "https://www.python.org/",
   },
 ];
