@@ -1,15 +1,15 @@
-import * as React from "react";
-import { Avatar } from "@mui/joy";
-import { motion } from "framer-motion";
-import { CharacterIcon, USF4Character, characterIcons } from "./USF4Character";
+import * as React from 'react';
+import { Avatar } from '@mui/joy';
+import { motion } from 'framer-motion';
+import { CharacterIcon, USF4Character, characterIcons } from './USF4Character';
 
-import vsIcon from "../../assets/characters-icon/vs-icon.png";
-import winIcon from "../../assets/match-icon/win.png";
-import defeatIcon from "../../assets/match-icon/defeat.png";
-import unknownIcon from "../../assets/characters-icon/USF4-characters/unknown-icon.png";
+import vsIcon from '../../assets/characters-icon/vs-icon.png';
+import winIcon from '../../assets/match-icon/win.png';
+import defeatIcon from '../../assets/match-icon/defeat.png';
+import unknownIcon from '../../assets/characters-icon/USF4-characters/unknown-icon.png';
 
-import "./score-result.css";
-import useWindowDimensions from "../../utils/useWindowDimensions";
+import './score-result.css';
+import useWindowDimensions from '../../utils/useWindowDimensions';
 
 type PlayerNumbers = 1 | 2;
 type PossibleRounds = 1 | 3 | 5 | 7;
@@ -43,7 +43,7 @@ const ScoreResult = (props: ScoreResultProps) => {
   const player1Score: PlayerScore = {
     playerNumber: 1,
     roundsNumber: props.roundsSetting,
-    character: p1Character || "UNKNOWN",
+    character: p1Character || 'UNKNOWN',
     hasWon: props.winner === 1 ? true : false,
     roundsWon: props.roundsWon,
     roundsLost: props.roundsLost,
@@ -52,7 +52,7 @@ const ScoreResult = (props: ScoreResultProps) => {
   const player2Score: PlayerScore = {
     playerNumber: 2,
     roundsNumber: props.roundsSetting,
-    character: p2Character || "UNKNOWN",
+    character: p2Character || 'UNKNOWN',
     hasWon: props.winner === 2 ? true : false,
     roundsWon: props.roundsWon,
     roundsLost: props.roundsLost,
@@ -80,41 +80,54 @@ const PlayerScore = (props: any) => {
   }, [width]); // Now we depend on width to handle window size change
 
   const playerScore = props.playerScore;
+  const hasWon = playerScore.hasWon;
   const playerNumber: number = playerScore.playerNumber;
   const roundsNumber: PossibleRounds = playerScore.roundsNumber;
   const roundsWon: number = playerScore.roundsWon;
   const roundsLost: number = playerScore.roundsLost;
   const roundsIconArray = [];
   const character = playerScore.character;
-  console.log(`RoundsWon ${roundsWon} RoundsLost ${roundsLost}`);
-  for (let i = 0; i < (roundsNumber + 1) / 2; i++) {
-    if (playerNumber === 1) {
-      if (i < roundsWon) {
-        roundsIconArray.push(
-          <div className="round-icon secondary-icon">
-            <img key={i} alt="Round Icon" src={winIcon} />
-          </div>
-        );
+
+  if (hasWon) {
+    // If the player has won, fill the array with winIcons only
+    for (let i = 0; i < (roundsNumber + 1) / 2; i++) {
+      roundsIconArray.push(
+        <div className="round-icon secondary-icon" key={i}>
+          <img alt="Round Icon" src={winIcon} />
+        </div>
+      );
+    }
+  } else {
+    // Regular behavior based on playerNumber
+    for (let i = 0; i < (roundsNumber + 1) / 2; i++) {
+      if (playerNumber === 1) {
+        if (i < roundsWon) {
+          roundsIconArray.push(
+            <div className="round-icon secondary-icon" key={i}>
+              <img alt="Round Icon" src={winIcon} />
+            </div>
+          );
+        } else {
+          roundsIconArray.push(
+            <div className="round-icon secondary-icon" key={i}>
+              <img alt="Round Icon" src={defeatIcon} />
+            </div>
+          );
+        }
       } else {
-        roundsIconArray.push(
-          <div className="round-icon secondary-icon">
-            <img key={i} alt="Round Icon" src={defeatIcon} />
-          </div>
-        );
-      }
-    } else {
-      if (i < roundsLost) {
-        roundsIconArray.push(
-          <div className="round-icon secondary-icon">
-            <img key={i} alt="Round Icon" src={defeatIcon} />
-          </div>
-        );
-      } else {
-        roundsIconArray.push(
-          <div className="round-icon secondary-icon">
-            <img key={i} alt="Round Icon" src={winIcon} />
-          </div>
-        );
+        if (i < roundsLost) {
+          roundsIconArray.push(
+            <div className="round-icon secondary-icon" key={i}>
+              <img alt="Round Icon" src={defeatIcon} />
+            </div>
+          );
+        } else {
+          roundsIconArray.push(
+            <div className="round-icon secondary-icon" key={i}>
+              <img alt="Round Icon" src={winIcon} />
+            </div>
+          );
+        }
       }
     }
   }
@@ -123,8 +136,8 @@ const PlayerScore = (props: any) => {
     <div
       className={`score-result-container player-${playerNumber}`}
       style={{
-        marginTop: "25px",
-        backgroundColor: "transparent",
+        marginTop: '25px',
+        backgroundColor: 'transparent',
         opacity: playerScore.hasWon === true ? 1 : 0.6,
       }}
     >
@@ -132,15 +145,15 @@ const PlayerScore = (props: any) => {
         <div
           className="player-1-container"
           style={{
-            gap: roundsNumber === 7 ? "5px" : "10px",
-            marginLeft: showRounds ? "50px" : undefined,
+            gap: roundsNumber === 7 ? '5px' : '10px',
+            marginLeft: showRounds ? '50px' : undefined,
           }}
         >
           <div className="main-character-icon player-1 primary-icon">
             <img
               alt="Main Character Icon"
               src={character.src || unknownIcon}
-              className={playerScore.hasWon ? "winning" : ""}
+              className={playerScore.hasWon ? 'winning' : ''}
             />
           </div>
           {!showRounds && roundsIconArray}
@@ -150,8 +163,8 @@ const PlayerScore = (props: any) => {
         <div
           className="player-2-container"
           style={{
-            gap: roundsNumber === 7 ? "5px" : "10px",
-            marginRight: showRounds ? "50px" : undefined,
+            gap: roundsNumber === 7 ? '5px' : '10px',
+            marginRight: showRounds ? '50px' : undefined,
           }}
         >
           {!showRounds && roundsIconArray}
@@ -159,7 +172,7 @@ const PlayerScore = (props: any) => {
             <img
               alt="Main Character Icon"
               src={character.src || unknownIcon}
-              className={playerScore.hasWon ? "winning" : ""}
+              className={playerScore.hasWon ? 'winning' : ''}
             />
           </div>
         </div>

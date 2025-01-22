@@ -1,11 +1,11 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import { FaGithub } from "react-icons/fa";
-import { FaExternalLinkAlt } from "react-icons/fa";
-import { themeShadows, useTheme } from "../contexts/ThemeContext";
-import ScoreResult from "./score-result/ScoreResult";
-import useWindowDimensions from "../utils/useWindowDimensions";
-import { YoutubePlayer } from "./YoutubePlayer";
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import { FaGithub } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
+import { themeShadows, useTheme } from '../contexts/ThemeContext';
+import ScoreResult from './score-result/ScoreResult';
+import useWindowDimensions from '../utils/useWindowDimensions';
+import { YoutubePlayer } from './YoutubePlayer';
 // import { motion } from "framer-motion";
 
 const ProjectCard = (props) => {
@@ -14,7 +14,6 @@ const ProjectCard = (props) => {
   //   hidden: { opacity: 0 },
   //   visible: { opacity: 1, transition: { duration: 0.8 } },
   // };
-  console.log(`THIS IS THE ID : ${props.videoId}`);
   const { width } = useWindowDimensions();
   const [isMobile, setIsMobile] = React.useState<boolean>(width < 847.778);
   React.useEffect(() => {

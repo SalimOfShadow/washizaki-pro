@@ -14,7 +14,7 @@ export interface VideoInfo {
 //localhost:9300/api/retrieve-info
 export async function fetchVideos() {
   try {
-    const response = await fetch('http://localhost:9300/api/retrieve-info');
+    const response = await fetch('https://washizaki:9300/api/retrieve-info');
 
     // Check if the response is OK (status code 200-299)
     if (!response.ok) {
@@ -24,9 +24,6 @@ export async function fetchVideos() {
     }
 
     const data = await response.json();
-
-    // Debugging the data received
-    console.log('Fetched data:', data);
 
     // Transform the data into the format you need
     const videos: VideoInfo[] = data.map((item: any) => ({
