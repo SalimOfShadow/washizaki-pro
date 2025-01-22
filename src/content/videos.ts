@@ -14,7 +14,8 @@ export interface VideoInfo {
 //localhost:9300/api/retrieve-info
 export async function fetchVideos() {
   try {
-    const response = await fetch('https://washizaki:9300/api/retrieve-info');
+    // const response = await fetch('https://washizaki:9300/api/retrieve-info');
+    const response = await fetch('http://localhost:9300/api/retrieve-info');
 
     // Check if the response is OK (status code 200-299)
     if (!response.ok) {
