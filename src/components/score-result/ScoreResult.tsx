@@ -82,7 +82,8 @@ const PlayerScore = (props: any) => {
   const playerScore = props.playerScore;
   const hasWon = playerScore.hasWon;
   const playerNumber: number = playerScore.playerNumber;
-  const roundsNumber: PossibleRounds = playerScore.roundsNumber;
+  const roundsNumber: PossibleRounds =
+    playerScore.roundsNumber > 7 ? 7 : playerScore.roundsNumber;
   const roundsWon: number = playerScore.roundsWon;
   const roundsLost: number = playerScore.roundsLost;
   const roundsIconArray = [];
