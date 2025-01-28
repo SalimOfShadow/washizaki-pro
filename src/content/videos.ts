@@ -8,7 +8,7 @@ export interface VideoInfo {
   roundsSetting: number;
   roundsWon: number;
   roundsLost: number;
-  matchWon: boolean;
+  winner: string;
 }
 // TODO -- ADD COSTUM EMBED YOUTUBE VIDEOS CONFIGS
 //localhost:9300/api/retrieve-info
@@ -34,7 +34,7 @@ export async function fetchVideos() {
       roundsSetting: item.roundsSetting,
       roundsWon: item.roundsWon,
       roundsLost: item.roundsLost,
-      matchWon: item.matchWon,
+      winner: item.winner,
     }));
 
     return videos;

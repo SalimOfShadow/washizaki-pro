@@ -1,32 +1,32 @@
-import "./App.css";
-import Hero, { PfpAnimation } from "./components/Hero";
-import information from "./content/information";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import ProjectCard from "./components/ProjectCard";
-import Heading from "./components/Heading";
-import { fetchVideos, VideoInfo } from "./content/videos";
-import Skill from "./components/Skill";
-import { skills } from "./content/skills";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useEffect, useState } from "react";
-import blogPosts from "./content/blogPosts";
-import ContactForm from "./components/ContactForm";
-import BlogPost from "./components/BlogPost";
-import React from "react";
+import './App.css';
+import Hero, { PfpAnimation } from './components/Hero';
+import information from './content/information';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import ProjectCard from './components/ProjectCard';
+import Heading from './components/Heading';
+import { fetchVideos, VideoInfo } from './content/videos';
+import Skill from './components/Skill';
+import { skills } from './content/skills';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { useEffect, useState } from 'react';
+import blogPosts from './content/blogPosts';
+import ContactForm from './components/ContactForm';
+import BlogPost from './components/BlogPost';
+import React from 'react';
 import {
   Character,
   CharacterName,
-} from "./components/animations/character/Character";
-import useWindowDimensions from "./utils/useWindowDimensions";
-import { CharacterState, useCharacter } from "./contexts/CharacterContext";
-import profilePicture from "./assets/profile-picture.png";
-import { Explosion } from "./components/animations/kyo/explosion/Explosion";
-import { changeTheme, useTheme } from "./contexts/ThemeContext";
-import HeroHeading from "./components/HeroHeading";
+} from './components/animations/character/Character';
+import useWindowDimensions from './utils/useWindowDimensions';
+import { CharacterState, useCharacter } from './contexts/CharacterContext';
+import profilePicture from './assets/profile-picture.png';
+import { Explosion } from './components/animations/kyo/explosion/Explosion';
+import { changeTheme, useTheme } from './contexts/ThemeContext';
+import HeroHeading from './components/HeroHeading';
 
-const characterArray: CharacterName[] = ["kyo", "iori", "kula"];
+const characterArray: CharacterName[] = ['kyo', 'iori', 'kula'];
 
 function App() {
   const { theme, setTheme } = useTheme();
@@ -46,10 +46,10 @@ function App() {
   const [characterPresent, setCharacterPresent] = useState<boolean>(false);
   const [explosions, setExplosions] = useState<React.ReactNode[]>([]);
   const [explosionsActive, setExplosionsActive] = useState<boolean>(false);
-  const [pfpAnimation, setPfpAnimation] = useState<PfpAnimation>("idle");
+  const [pfpAnimation, setPfpAnimation] = useState<PfpAnimation>('idle');
 
   async function changeCharacter(characterSelected?: CharacterName) {
-    setCharacterState("running-back");
+    setCharacterState('running-back');
     const wait = (ms: number | undefined) =>
       new Promise((resolve) => setTimeout(resolve, ms));
     await wait(1803);
@@ -68,7 +68,7 @@ function App() {
       const newTheme = changeTheme(characterSelected, undefined);
       setTheme(newTheme);
     }
-    setCharacterState("running");
+    setCharacterState('running');
   }
 
   useEffect(() => {
@@ -78,7 +78,7 @@ function App() {
         setVideos(fetchedVideos);
         setVideosReady(true);
       } catch (error) {
-        console.error("Failed to load videos:", error);
+        console.error('Failed to load videos:', error);
       }
     };
 
@@ -108,7 +108,7 @@ function App() {
   }, [explosionsActive]);
 
   useEffect(() => {
-    if (pageDimensions.width > 1242 && characterState !== "running-back") {
+    if (pageDimensions.width > 1242 && characterState !== 'running-back') {
       setCharacterPresent(true);
     } else {
       setCharacterPresent(false);
@@ -117,13 +117,13 @@ function App() {
 
   useEffect(() => {
     if (videosReady && projectInView) {
-      projectControls.start("visible");
+      projectControls.start('visible');
     }
   }, [videosReady, projectInView, projectControls]);
 
   useEffect(() => {
     if (skillInView) {
-      skillControls.start("visible");
+      skillControls.start('visible');
     }
   }, [skillControls, skillInView]);
 
@@ -155,70 +155,70 @@ function App() {
       />
 
       {characterPresent && ( // Conditionally render the character if characterPresent is true
-        <div style={{ display: "flex", position: "relative" }}>
-          {characterState === "running" || characterState === "running-back" ? (
+        <div style={{ display: 'flex', position: 'relative' }}>
+          {characterState === 'running' || characterState === 'running-back' ? (
             <motion.div
               initial={{
                 x:
-                  characterState === "running-back"
+                  characterState === 'running-back'
                     ? pageDimensions.width / 2 -
-                      (characterName === "kyo" ||
-                      characterName === "kula" ||
-                      characterName === "bison"
+                      (characterName === 'kyo' ||
+                      characterName === 'kula' ||
+                      characterName === 'bison'
                         ? 250
                         : -250) // Center with offset based on character
-                    : characterName === "kyo" ||
-                      characterName === "kula" ||
-                      characterName === "bison"
+                    : characterName === 'kyo' ||
+                      characterName === 'kula' ||
+                      characterName === 'bison'
                     ? -250 // Off-screen left for Kyo
                     : pageDimensions.width + 300, // Off-screen right for Iori
               }}
               animate={{
                 x:
-                  characterState === "running-back"
-                    ? characterName === "kyo" ||
-                      characterName === "kula" ||
-                      characterName === "bison"
+                  characterState === 'running-back'
+                    ? characterName === 'kyo' ||
+                      characterName === 'kula' ||
+                      characterName === 'bison'
                       ? -250 // Back to off-screen left for Kyo
                       : pageDimensions.width + 300 // Back to off-screen right for Iori
                     : pageDimensions.width / 2 -
-                      (characterName === "kyo" ||
-                      characterName === "kula" ||
-                      characterName === "bison"
+                      (characterName === 'kyo' ||
+                      characterName === 'kula' ||
+                      characterName === 'bison'
                         ? 250
                         : -250), // Near-center position
               }}
               transition={{ duration: 1.5 }}
               onAnimationComplete={() => {
-                if (characterState === "running") {
-                  setCharacterState("neomax");
+                if (characterState === 'running') {
+                  setCharacterState('neomax');
 
                   setTimeout(() => {
-                    if (characterName === "kyo") {
+                    if (characterName === 'kyo') {
                       setExplosionsActive(true);
-                      setTimeout(() => setPfpAnimation("quake"), 1);
-                      setTimeout(() => setPfpAnimation("idle"), 1300); // Makes it so it happens everytime kyo reappears
+                      setTimeout(() => setPfpAnimation('quake'), 1);
+                      setTimeout(() => setPfpAnimation('idle'), 1300); // Makes it so it happens everytime kyo reappears
                     }
                   }, 1);
                   setTimeout(() => {
-                    if (characterName === "iori") {
-                      setTimeout(() => setPfpAnimation("scratched"), 100);
-                      setTimeout(() => setPfpAnimation("idle"), 1300);
+                    if (characterName === 'iori') {
+                      setTimeout(() => setPfpAnimation('scratched'), 100);
+                      setTimeout(() => setPfpAnimation('idle'), 1300);
                     }
                   }, 600);
                   setTimeout(() => {
-                    if (characterName === "kula") {
-                      setTimeout(() => setPfpAnimation("frozen"), 1);
-                      setTimeout(() => setPfpAnimation("idle"), 2100);
+                    if (characterName === 'kula') {
+                      setTimeout(() => setPfpAnimation('frozen'), 1);
+                      setTimeout(() => setPfpAnimation('idle'), 2100);
                     }
                   }, 600);
                   setTimeout(() => {
-                    if (characterName === "bison") {
-                      setTimeout(() => setPfpAnimation("quake"));
-                      setTimeout(() => setPfpAnimation("idle"), 2100); // TODO - fix issue that causes the animation not to restart
+                    if (characterName === 'bison') {
+                      setTimeout(() => setPfpAnimation('quake'));
+                      setTimeout(() => setPfpAnimation('idle'), 2100); // TODO - fix issue that causes the animation not to restart
                     }
                   }, 400);
-                } else if (characterState === "running-back")
+                } else if (characterState === 'running-back')
                   setCharacterPresent(false);
               }}
             >
@@ -227,19 +227,19 @@ function App() {
           ) : (
             <div
               style={(() => {
-                if (characterName === "bison") {
+                if (characterName === 'bison') {
                   return {
-                    position: "absolute",
+                    position: 'absolute',
                     top: 0,
                     left: `${pageDimensions.width / 2 - 200}px`, // Set to final position when standing
-                    cursor: characterState === "final" ? "pointer" : "auto",
+                    cursor: characterState === 'final' ? 'pointer' : 'auto',
                   };
                 } else {
                   return {};
                 }
               })()}
               onClick={() => {
-                if (characterState === "final") {
+                if (characterState === 'final') {
                   changeCharacter();
                 }
               }}
@@ -251,7 +251,7 @@ function App() {
       )}
       <div
         onClick={async () => {
-          if (characterState === "final") {
+          if (characterState === 'final') {
             changeCharacter();
           }
         }}
@@ -275,7 +275,7 @@ function App() {
           className="project-map"
           ref={projectRef}
           initial="hidden"
-          animate={videosReady ? projectControls : "hidden"} // Wait until videos are ready
+          animate={videosReady ? projectControls : 'hidden'} // Wait until videos are ready
           variants={containerVariants} // Enables staggerChildren
         >
           {videosReady
@@ -288,7 +288,7 @@ function App() {
                     roundsSetting={video.roundsSetting}
                     roundsWon={video.roundsWon}
                     roundsLost={video.roundsLost}
-                    matchWon={video.matchWon}
+                    winner={video.winner}
                   />
                 </motion.div>
               ))

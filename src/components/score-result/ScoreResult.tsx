@@ -12,6 +12,7 @@ import './score-result.css';
 import useWindowDimensions from '../../utils/useWindowDimensions';
 
 type PlayerNumbers = 1 | 2;
+
 type PossibleRounds = 1 | 3 | 5 | 7;
 
 interface PlayerScore {
@@ -26,7 +27,7 @@ interface PlayerScore {
 interface ScoreResultProps {
   p1Character: USF4Character;
   p2Character: USF4Character;
-  winner: PlayerNumbers;
+  winner: string;
   roundsSetting: PossibleRounds;
   roundsWon: number;
   roundsLost: number;
@@ -44,7 +45,7 @@ const ScoreResult = (props: ScoreResultProps) => {
     playerNumber: 1,
     roundsNumber: props.roundsSetting,
     character: p1Character || 'UNKNOWN',
-    hasWon: props.winner === 1 ? true : false,
+    hasWon: props.winner === 'P1' ? true : false,
     roundsWon: props.roundsWon,
     roundsLost: props.roundsLost,
   };
@@ -53,7 +54,7 @@ const ScoreResult = (props: ScoreResultProps) => {
     playerNumber: 2,
     roundsNumber: props.roundsSetting,
     character: p2Character || 'UNKNOWN',
-    hasWon: props.winner === 2 ? true : false,
+    hasWon: props.winner === 'P2' ? true : false,
     roundsWon: props.roundsWon,
     roundsLost: props.roundsLost,
   };
@@ -89,6 +90,11 @@ const PlayerScore = (props: any) => {
   const roundsIconArray = [];
   const character = playerScore.character;
 
+  console.log(playerScore.character);
+
+  console.warn(
+    ` won ${hasWon} has won this many rounds : ${roundsWon} and lost ${roundsLost}`
+  );
   if (hasWon) {
     // If the player has won, fill the array with winIcons only
     for (let i = 0; i < (roundsNumber + 1) / 2; i++) {
@@ -117,15 +123,15 @@ const PlayerScore = (props: any) => {
         }
       } else {
         if (i < roundsLost) {
-          roundsIconArray.push(
+          roundsIconArray.unshift(
             <div className="round-icon secondary-icon" key={i}>
-              <img alt="Round Icon" src={defeatIcon} />
+              <img alt="Round Icon" src={winIcon} />
             </div>
           );
         } else {
-          roundsIconArray.push(
+          roundsIconArray.unshift(
             <div className="round-icon secondary-icon" key={i}>
-              <img alt="Round Icon" src={winIcon} />
+              <img alt="Round Icon" src={defeatIcon} />
             </div>
           );
         }

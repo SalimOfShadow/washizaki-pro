@@ -35,7 +35,7 @@ const ProjectCard = (props) => {
       <ScoreResult
         p1Character={props.myCharacter}
         p2Character={props.opponentsCharacter}
-        winner={props.matchWon === true ? 1 : 2} // TODO - USE P1 AND P2 INSTEAD OF myCharacter etc
+        winner={props.winner} // TODO - USE P1 AND P2 INSTEAD OF myCharacter etc
         roundsSetting={props.roundsSetting}
         roundsWon={props.roundsWon}
         roundsLost={props.roundsLost}
